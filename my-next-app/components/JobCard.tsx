@@ -2,6 +2,7 @@
 import { Job } from "@/types";
 import { useState } from "react";
 import DeleteJobButton from "./DeleteJobButton";
+import EditJobButton from "./EditJobButton";
 
 const JobCard = ({job}: {job: Job}) => {
 
@@ -28,7 +29,7 @@ const JobCard = ({job}: {job: Job}) => {
                       <div className="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 absolute top-0 right-9">
                           <ul className="py-2" aria-labelledby="dropdownButton">
                           <li>
-                              <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
+                              <EditJobButton id={job.id}/>
                           </li>
                           <li>
                               <DeleteJobButton id={job.id}/>
