@@ -10,6 +10,8 @@ const JobCard = ({job}: {job: Job}) => {
         setDropdownOpen(!dropdownOpen);
     };
 
+    const tagArr = job.tags?.split(",")
+
   return (
     <section>
         <div className="w-3xl max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
@@ -22,24 +24,24 @@ const JobCard = ({job}: {job: Job}) => {
                       </button>
                       {/* <!-- Dropdown menu --> */}
                       {dropdownOpen  &&
-                      <div className="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+                      <div className="relative">
+                      <div className="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 absolute top-0 right-9">
                           <ul className="py-2" aria-labelledby="dropdownButton">
                           <li>
                               <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
                           </li>
                           <li>
-                              <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export Data</a>
-                          </li>
-                          <li>
                               <DeleteJobButton id={job.id}/>
                           </li>
                           </ul>
+                      </div>
                       </div>}
                   </div>
                   <div className="flex flex-col items-center pb-10">
                       {/* <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image"/> */}
-                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{job.title}</h5>
+                        <h5 className="mb-1 text-xl font-medium dark:text-cyan-50">{job.title}</h5>
                       <span className="text-sm text-gray-500 dark:text-gray-400">{job.company}</span>
+                        <div className="flex flex-wrap gap-2 mt-5">{tagArr?.map(tag => <span className="text-sm bg-gray-900 rounded-3xl p-2 text-zinc-200">{tag}</span>)}</div>
                       <div className="flex mt-4 md:mt-6">
                           <a href="#" className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Apply</a>
                           <a href="#" className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Details</a>

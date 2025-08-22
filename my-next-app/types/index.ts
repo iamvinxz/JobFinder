@@ -6,7 +6,8 @@ export interface Job {
   website: string,
   tags?: string,
   description?: string,
-  id:number
+  id:number,
+  name: string
 }
 
 export interface CreateJob {

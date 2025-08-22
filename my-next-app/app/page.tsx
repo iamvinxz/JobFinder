@@ -1,21 +1,12 @@
 "use client";
-
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 export default function Home() {
 
   const [action, setAction] = useState("login");
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-  useEffect(() => {
-    const token = localStorage.getItem("Token")
-    if(token){
-      setIsLoggedIn(true)
-    } 
-  }, [])
 
   //for registration
   const [registerForm, setRegisterForm] = useState({
@@ -57,13 +48,15 @@ export default function Home() {
   const { mutate, isError, isSuccess,error} = useMutation({mutationFn: loginAccount, 
     onError: () => {
       toast("Oops! Wrong credentials", {autoClose: 2000, type: "error"})
+    },onSuccess: () => {
+        toast("Logged in successfully", {autoClose: 2000, type: "success", theme: "dark"})
     }
   })
 
   const handleLoginAccount = (e: any) => {
       e.preventDefault()
       if (loginForm.email.trim() === "" || loginForm.password.trim() === "") {
-        toast("Please enter your credentials", {type:"error", autoClose: 1000})
+        toast("Please enter your credentials", {type:"error", theme:"dark", autoClose: 1000})
         return;
       } 
       mutate(loginForm)
@@ -139,7 +132,7 @@ export default function Home() {
           </div>
         </form>
       </section>
-    }
+      }
     </main>
   )}
 

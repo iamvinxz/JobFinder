@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 import TanstackProvider from "./provider/TanstackProvider";
 import { ToastContainer } from "react-toastify";
+import Navbar from "@/components/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,15 +28,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <nav>
-          <ul className="flex justify-center gap-10 p-5 cursor-pointer items-center">
-            <li><Link href="./">Home</Link></li> 
-            <li><Link href="./Jobs">Jobs</Link></li>
-            <li><Link href="./about">About</Link></li>
-          </ul>
-        </nav>
-        
         <TanstackProvider>
+          <Navbar/>
           {children}
         <ToastContainer  autoClose={3000} position="top-right"/>
         </TanstackProvider>
