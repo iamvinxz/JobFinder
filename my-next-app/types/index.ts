@@ -6,8 +6,9 @@ export interface Job {
   website: string,
   tags?: string,
   description?: string,
-  id:number,
-  name: string
+  id?:number,
+  name?: string,
+  user_id?: number
 }
 
 export interface CreateJob {
@@ -18,4 +19,13 @@ export interface CreateJob {
   website: string,
   tags?: string,
   description?: string,
+}
+
+export interface RegisterForm{
+  first_name: string,
+  last_name: string,
+  email: string,
+  password: string,
+  confirm_password: string,
+  name?: string
 }

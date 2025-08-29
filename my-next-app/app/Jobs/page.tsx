@@ -39,7 +39,9 @@ const Jobs = () => {
       toast("New job added successfuly!", {type: 'success', theme: "dark", autoClose: 2000})
       setIsActive(!isActive)
       setJob({...job,title:"", company:"",location:"",email:"",website:"",tags:"",description:""})
-    }
+    },onError(error, variables, context) {
+      toast(error.message, {type: 'error', theme: "dark", autoClose: 2000})
+    },
   }) 
 
   const addJobPost = (e: any) => {

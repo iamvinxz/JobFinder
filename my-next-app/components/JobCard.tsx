@@ -29,7 +29,7 @@ const JobCard = ({job}: {job: Job}) => {
                       <div className="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 absolute top-0 right-9">
                           <ul className="py-2" aria-labelledby="dropdownButton">
                           <li>
-                              <EditJobButton id={job.id}/>
+                              <EditJobButton id={job.id} jobInfo={job}/>
                           </li>
                           <li>
                               <DeleteJobButton id={job.id}/>
